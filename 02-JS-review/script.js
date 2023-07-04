@@ -142,5 +142,80 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
-const books = getBooks();
-// books;
+//Destructuring
+const book = getBook(2);
+book;
+// const title = book.title;
+// const author = book.author;
+// author;
+// title;
+const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
+  book; //for this property and variable name should be same.
+book;
+console.log(author, title, genres);
+
+// const primaryGenre = genres[0];
+// const secondryGenre = genres[1];
+// const [primaryGenre, secondryGenre, thirdGenre] = genres;
+// console.log(primaryGenre, secondryGenre, thirdGenre);
+
+//Rest operator
+
+const [primaryGenre, secondryGenre, ...otherGenre] = genres;
+console.log(primaryGenre, secondryGenre, otherGenre);
+
+const newGenre = [...genres, "epic fantasy"];
+newGenre;
+
+const updateBook = {
+  ...book,
+  //Adding a new property
+  moviePublicationDate: "2001-12-19",
+  //overwriting an existing property
+  pages: 1210,
+};
+updateBook;
+
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+
+const getYear = (str) => str.split("-")[0];
+// getYear;
+console.log(getYear(publicationDate));
+
+const summary = `${title}, a ${pages}-page long book, was written by ${author} and published in ${getYear(
+  publicationDate
+)}. The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie`;
+summary;
+
+const pagesRange = pages > 1000 ? "Over a thousand" : "less than a thousand";
+pagesRange;
+console.log(`The book has ${pagesRange} pages`);
+
+console.log(true && "Some Stirng");
+console.log(false && "Some Stirng");
+
+console.log(hasMovieAdaptation && "This book has a movie");
+
+//falsy:0,'',null,undefined
+console.log("jonas" && "Some String");
+console.log(undefined && "Some String");
+
+console.log(true || "some string");
+console.log(false || "some string");
+
+console.log(book.translations.spanish);
+
+const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
+spanishTranslation;
+
+console.log(book.reviews.librarything.reviewsCount);
+
+const countWrong = book.reviews.librarything.reviewsCount || "no data";
+countWrong;
+
+//Nullish coalescing
+//returns the second value when the first value is null or undefined,but not when it is zero or an empty string.
+const count = book.reviews.librarything.reviewsCount ?? "no data";
+count;
