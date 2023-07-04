@@ -142,8 +142,9 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+/*
 //Destructuring
-const book = getBook(2);
+const book = getBook(3);
 book;
 // const title = book.title;
 // const author = book.author;
@@ -210,12 +211,47 @@ console.log(book.translations.spanish);
 const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
 spanishTranslation;
 
-console.log(book.reviews.librarything.reviewsCount);
+// console.log(book.reviews.librarything.reviewsCount);
 
-const countWrong = book.reviews.librarything.reviewsCount || "no data";
-countWrong;
+// const countWrong = book.reviews.librarything.reviewsCount || "no data";
+// countWrong;
 
 //Nullish coalescing
 //returns the second value when the first value is null or undefined,but not when it is zero or an empty string.
-const count = book.reviews.librarything.reviewsCount ?? "no data";
-count;
+// const count = book.reviews.librarything.reviewsCount ?? "no data";
+// count;
+
+//Opitonal chaining using ?
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+console.log(getTotalReviewCount(book));
+*/
+
+//Map Method
+const books = getBooks();
+
+const x = [1, 2, 3, 4, 5].map((el) => el * 2);
+console.log(x);
+
+const title = books.map((book) => book.title);
+title;
+
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviewCount(book),
+}));
+essentialData;
+
+const longBooks = books.filter((book) => book.pages > 500);
+longBooks;
