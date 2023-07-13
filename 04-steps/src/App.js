@@ -29,11 +29,12 @@ export default function App() {
     //test.name = "Fred"
   }
 
+
   return (
     <>
       <button className="close" onClick={() => setIsOpen((is) => !is)}>
         &times;
-      </button>
+      </button> 
       {isOpen && (
         <div className="steps">
           <div className="numbers">
