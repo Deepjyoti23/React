@@ -3,6 +3,8 @@ import { useState } from "react";
 export default function Form({ onAdditems }) {
     const [description, setDescription] = useState("");
     const [quantity, setQuantity] = useState(1);
+    
+    
     function handleSubmit(e) {
       e.preventDefault();
   
@@ -36,7 +38,7 @@ export default function Form({ onAdditems }) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button>Add</button>
+        {/* <button>Add</button> */}
       </form>
     );
   }

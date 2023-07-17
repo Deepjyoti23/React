@@ -32,7 +32,6 @@ export default function PackingList({
             onDeleteItem={onDeleteItem}
             onToggleItems={onToggleItems}
             key={item.id}
-            on
           />
         ))}
       </ul>
