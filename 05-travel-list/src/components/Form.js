@@ -38,7 +38,7 @@ export default function Form({ onAdditems }) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        {/* <button>Add</button> */}
+        <button>Add</button>
       </form>
     );
   }

@@ -22,57 +22,50 @@ function TipCalculator() {
     service2: 0,
   });
 
-  const { bill, service1, service2 } = calculate;
-
-  const tip = (service1 + service2) / 2;
+  const tip = (calculate.service1 + calculate.service2) / 2;
 
   function resetAll() {
     setCalculate({
       bill: "",
       service1: 0,
       service2: 0,
-    });
+    })
   }
 
-  function handleBillChange(e) {
+
+  function handleBillChange(e){
     setCalculate({
-      ...calculate,
-      bill: Number(e.target.value),
-    });
+      ...calculate,bill:Number(e.target.value)
+    })
   }
-  function handleService1(e) {
+  function handleService1(e){
     setCalculate({
-      ...calculate,
-      service1: Number(e.target.value),
-    });
+      ...calculate, service1:Number(e.target.value)
+    })
   }
-  function handleService2(e) {
+  function handleService2(e){
     setCalculate({
-      ...calculate,
-      service2: Number(e.target.value),
-    });
+      ...calculate, service2:Number(e.target.value)
+    })
   }
+
+  
 
   return (
     <div>
-      <BillInput bill={bill} onBill={handleBillChange} />
+      <BillInput bill={calculate.bill} onBill={handleBillChange} />
       <SelectPercentage
         text={"How much was the bill?"}
-        service={service1}
+        service={calculate.service1}
         onService={handleService1}
       />
       <SelectPercentage
         text={"How did your friend like the service?"}
-        service={service2}
+        service={calculate.service2}
         onService={handleService2}
       />
-      {bill > 0 && (
-        <>
-          {" "}
-          <Output bill={bill} tip={tip} />
-          <Reset onReset={resetAll} />
-        </>
-      )}
+      <Output bill={calculate.bill} tip={tip} />
+      <Reset onReset={resetAll} />
     </div>
   );
 }
@@ -81,7 +74,11 @@ function BillInput({ bill, onBill }) {
   return (
     <div>
       <span>How much was the bill?</span>
-      <input type="text" value={bill} onChange={onBill} />
+      <input
+        type="text"
+        value={bill}
+        onChange={onBill}
+      />
     </div>
   );
 }
@@ -90,7 +87,10 @@ function SelectPercentage({ text, service, onService }) {
   return (
     <div>
       <span>{text}</span>
-      <select value={service} onChange={onService}>
+      <select
+        value={service}
+        onChange={onService}
+      >
         <option value="0">Dissatisfied(0%)</option>
         <option value="5">It was okay(5%)</option>
         <option value="10">It was good(10%)</option>
