@@ -58,6 +58,11 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedID, setSelectedID] = useState(null);
+
+  // fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`)
+  //   .then((res) => res.json())
+  //   .then((data) => setMovies(data.Search));
+
   // const tempQuery = "interstellar";
 
   // useEffect(function () {
@@ -90,7 +95,6 @@ export default function App() {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
 
-  
   useEffect(
     function () {
       const controller = new AbortController();
@@ -111,7 +115,7 @@ export default function App() {
           // console.log(data)
           if (data.Response === "False") throw new Error("Movie not found");
           setMovies(data.Search);
-           setError("");
+          setError("");
           // console.log(data.Search);
         } catch (err) {
           if (err.name !== "AbortError") {
@@ -126,7 +130,7 @@ export default function App() {
 
         // return () => console.log("Cleanup");
       }
-      if (!query.length<3) {
+      if (!query.length < 3) {
         setMovies([]);
         setError(" ");
         return;
@@ -349,16 +353,18 @@ function MovieDetails({ selectedID, onCloseMovie, onAddWatched, watched }) {
     onCloseMovie();
   }
 
-  useEffect(function(){
-    document.addEventListener('keydown',function(e){
-     console.log(e)
-     if(e.code === 'Escape'){
-       onCloseMovie();
-       console.log('closing')
-     }
-    })
- },[onCloseMovie])
-
+  useEffect(
+    function () {
+      document.addEventListener("keydown", function (e) {
+        console.log(e);
+        if (e.code === "Escape") {
+          onCloseMovie();
+          console.log("closing");
+        }
+      });
+    },
+    [onCloseMovie]
+  );
 
   useEffect(
     function () {
