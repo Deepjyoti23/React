@@ -124,6 +124,12 @@ function Search({ query, setQuery }) {
     inputEl.current.focus();
     setQuery("");
   });
+ 
+  // useEffect(function(){
+  //   const el=document.querySelector('.search')
+  //   console.log(el)
+  //   el.focus();
+  // },[])
 
   // useEffect(
   //   function () {

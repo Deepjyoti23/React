@@ -10,14 +10,14 @@ export default function App() {
   return (
     <div>
       <Steps />
-      <StepMessage step={1}>
+      {/* <StepMessage step={1}>
         <p>Pass in content </p>
         <p>✌</p>
       </StepMessage>
       <StepMessage step={2}>
         <p>Read Children prop</p>
         <p>😎</p>
-      </StepMessage>
+      </StepMessage> */}
 
       {/* <Steps /> */}
     </div>

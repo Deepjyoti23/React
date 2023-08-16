@@ -226,11 +226,11 @@ function getTotalReviewCount(book) {
   const goodreads = book.reviews?.goodreads?.reviewsCount;
   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
   return goodreads + librarything;
+  // goodreads;
 }
-
 console.log(getTotalReviewCount(book));
 */
-/*
+
 //Map Method
 const books = getBooks();
 
@@ -244,6 +244,7 @@ function getTotalReviewCount(book) {
   const goodreads = book.reviews?.goodreads?.reviewsCount;
   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
   return goodreads + librarything;
+  // console.log(goodreads);
 }
 
 const essentialData = books.map((book) => ({
@@ -296,7 +297,7 @@ const booksAfterUpdate = booksAfterDelete.map((book) =>
   book.id === 1 ? {} : book
 );
 booksAfterUpdate;
-*/
+
 
 // console.log(fetch("https://jsonplaceholder.typicode.com/todos"));
 // fetch("https://jsonplaceholder.typicode.com/todos")

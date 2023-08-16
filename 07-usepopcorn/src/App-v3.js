@@ -479,6 +479,7 @@ function WatchedSummary({ watched }) {
   );
 }
 
+
 function WatchedMoviesList({ watched, onDeleteWatched }) {
   return (
     <ul className="list">
